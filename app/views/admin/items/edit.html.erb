@@ -7,7 +7,7 @@
      <h2>商品編集</h2>
 
       <div class="item-new-form">
-        <%= f.attachment_field :image %>
+        <%= f.attachment_field :item_image %>
       </div>
       <div class="product-img" style="margin-top: 20px;">
       <%= attachment_image_tag @item, :item_image, :fill, 400, 400, fallback: 'no_image.png' %>

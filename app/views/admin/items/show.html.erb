@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-4">
       <h2>商品詳細</h2><br>
-      <%= attachment_image_tag @item, :image, :fill, 300, 300, fallback: 'no_image.jpg' %>
+      <%= image_tag @item.get_item_image(300,300) %>
   </div>
 
       <br><br><br><br>
@@ -27,7 +27,7 @@
             <tr>
               <td>販売ステータス</td>
               <td>
-              <% if @item.is_active == false %>
+              <% if @item.is_active %>
               販売中
               <% else %>
               販売停止中
@@ -36,8 +36,7 @@
             </tr>
           </tbody>
         </table>
-        <div class="col-md-offset-1 col-
-          md-2 text-right">
+        <div class="col-md-offset-1 col-md-2 text-right">
           <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-primary" %>
         </div>
       </div>

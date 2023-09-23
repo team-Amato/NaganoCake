@@ -38,7 +38,12 @@
 
             <tr>
               <th>販売ステータス</th>
-              <td><%= f.select :is_active, [["販売中","false"], ["販売不可","true"]], include_blank: "--選択してください--" %></td>
+              <td><%#= f.select :is_active, [["販売中",true], ["販売不可",false]], include_blank: "--選択してください--" %>
+              <%= f.radio_button :is_active,true %>
+              <%= f.label :is_active,"販売中" %>
+              <%= f.radio_button :is_active,false %>
+              <%= f.label :is_active,"販売不可" %>
+              </td>
             <tr>
          </tbody>
       </table>
