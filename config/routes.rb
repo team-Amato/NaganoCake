@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     patch 'customers/withdraw'
   end
   
+  namespace :public do
+  resources :customers, only: [:show, :edit, :update]
+end
 
   resources :cart_items, only: [:index, :update, :destroy, :create]
   delete 'cart_items/destroy_all'
