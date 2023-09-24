@@ -1,4 +1,4 @@
-<div class="container">
+    <div class="container">
       <div class = "row">
         <!--ジャンル検索-->
         <div class="col-3">
@@ -6,19 +6,17 @@
         </div>
 
         <div class="col-9">
-
-         <%= image_tag item.get_item_image, size:'100x100' %><!--商品画像-->
+         <%= image_tag @item.get_item_image(100,100) %><!--商品画像-->
          <%= @item.name %> <!--商品名-->
          <%= @item.explanation %> <!--商品説明-->
          <%= @item.price + @item.price * 0.1 %> <!--値段( 税抜価格＋ (税抜価格 ×  0.1))-->
          <!--↓ここでカートに個数を渡す↓(未完成)-->
-         <%= form_with(model: cart_item, local: true) do |f| %>
+         <%= form_with(model:@cart_item, local: true) do |f| %>
           <div class="form-group">
-            <%= f.label :amount, '個数' %>
-            <!--requredで選択必須にしている-->
-            <%= f.select :amount, {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5}, { include_blank: '個数選択'}, {required: true } %><!--個数選択プルダウン-->
+            <%= f.select :amount, {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5}, { include_blank: "個数選択"}, {required: true } %><!--個数選択プルダウン-->
           </div>
-          <div class="form-group">
-            <%= f.submit 'カートに入れる', class: 'btn btn-success btn-block' %> <!--カートに入れるボタン-->
-          </div>
+            <%= f.submit "カートに入れる" %> <!--カートに入れるボタン-->
          <% end %>
+        </div>
+      </div>
+    </div>
