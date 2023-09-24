@@ -5,4 +5,5 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :addresses, dependent: :destroy
   has_many :order, dependent: :destroy
+  validates :password, presence: true, on: :create
 end
