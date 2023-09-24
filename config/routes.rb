@@ -1,23 +1,25 @@
 Rails.application.routes.draw do
   # 顧客用
   # URL /customers/sign_in ...
-  devise_for :customers,skip: [:passwords], controllers: {
+  devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
   
-    scope module: :public do
+  scope module: :public do
     root to: "homes#top"
     get '/about' => "homes#about"
     get '/customers/mypage' => 'customers#show'
     get 'customers/check'
     patch 'customers/withdraw'
+
+    get '/genre/search' => 'searches#genre_search'
+
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart_items/destroy_all'
     resources :orders, only: [:new, :create, :index, :show]
@@ -42,7 +44,8 @@ end
     delete '/admin/sign_out' => 'sessions#destroy'
   end
 
-namespace :admin do
+  #admin
+  namespace :admin do
     get '/' => 'homes#top'
     resources :order_details, only: [:update]
     resources :items, only: [:edit, :update, :new, :create, :index, :show]
@@ -53,3 +56,4 @@ namespace :admin do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
