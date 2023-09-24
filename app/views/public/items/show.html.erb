@@ -11,7 +11,7 @@
          <%= @item.explanation %> <!--商品説明-->
          <%= @item.price + @item.price * 0.1 %> <!--値段( 税抜価格＋ (税抜価格 ×  0.1))-->
          <!--↓ここでカートに個数を渡す↓(未完成)-->
-         <%= form_with(model:@cart_item, local: true) do |f| %>
+         <%= form_with(model: @cart_item, local: true) do |f| %>
           <div class="form-group">
             <%= f.select :amount, *[1..10], { include_blank: "個数選択"}, {required: true } %><!--個数選択プルダウン-->
             <%= f.hidden_field :item_id, :value => @item.id %>
