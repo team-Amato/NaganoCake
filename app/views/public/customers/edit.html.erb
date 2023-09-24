@@ -1,0 +1,27 @@
+<h1>会員情報編集</h1>
+
+<%= form_with model: @customer, url: "/customers", local:true do |f| %>
+
+  <h4>氏名</h4>
+  <%= f.text_field :first_name %>
+  <%= f.text_field :last_name %>
+
+  <h4>フリガナ</h4>
+  <%= f.text_field :katakana_first_name %>
+  <%= f.text_field :katakana_last_name %>
+
+  <h4>郵便番号</h4>
+  <%= f.text_field :postal_code %>
+
+  <h4>住所</h4>
+  <%= f.text_field :address %>
+
+  <h4>電話番号</h4>
+  <%= f.text_field :telephone_number %>
+  
+  <h4>メールアドレス</h4>
+  <%= f.email_field :email %>
+
+  <%= f.submit '保存' %>
+
+<% end %>

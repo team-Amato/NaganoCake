@@ -32,6 +32,12 @@
               ログアウト
             <% end %>
           </li>
+            <% elsif admin_signed_in? %>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+            ログアウト
+            <% end %>
+          </li>
         <% else %>
         <!--マイページ-->
           <li>
@@ -57,8 +63,6 @@
               ログイン
             <% end %>
           </li>
-
-          <li>
             <%= form_with local: true, method: :get do |f| %>
               <%= f.text_field :word %>
             <% end %>
