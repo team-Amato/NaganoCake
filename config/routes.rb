@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get '/customers/mypage' => 'customers#show'
     get 'customers/check'
     patch 'customers/withdraw'
+    get '/genre/search' => 'searches#genre_search'
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart_items/destroy_all'
     resources :orders, only: [:new, :create, :index, :show]
