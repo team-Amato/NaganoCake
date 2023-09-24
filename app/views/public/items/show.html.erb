@@ -13,7 +13,8 @@
          <!--↓ここでカートに個数を渡す↓(未完成)-->
          <%= form_with(model:@cart_item, local: true) do |f| %>
           <div class="form-group">
-            <%= f.select :amount, {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5}, { include_blank: "個数選択"}, {required: true } %><!--個数選択プルダウン-->
+            <%= f.select :amount, *[1..10], { include_blank: "個数選択"}, {required: true } %><!--個数選択プルダウン-->
+            <%= f.hidden_field :item_id, :value => @item.id %>
           </div>
             <%= f.submit "カートに入れる" %> <!--カートに入れるボタン-->
          <% end %>
