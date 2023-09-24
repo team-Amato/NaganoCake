@@ -1,15 +1,15 @@
 
 <h1>ショッピングカート</h1>
+
+<!--カートを空にするボタン-->
+<%= link_to cart_items_destroy_all_path, method: :delete do %>
+    <button type="button" class="btn btn-danger text-light">カートを空にする</button>
+<% end %>
+
 <%= render 'index',cart_items: @cart_items %>
 
 
-
-
-　 　削除ボタン
-
-　 　合計金額(小計の合計)
-
-　 　買い物を続ける(Topぺージに移動)
-
-　 　情報入力に進む(注文情報入力画面に移動)
+     <!--買い物を続ける(Topぺージに移動)-->
+　 　<!--合計金額(小計の合計)-->
+     <!--情報入力に進む(注文情報入力画面に移動)-->
 
