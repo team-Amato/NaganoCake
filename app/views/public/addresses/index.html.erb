@@ -70,7 +70,7 @@
                 <td><%= address.name %></td>
                 <td class="text-center	">
                   <%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
-                  <%= link_to "削除する", address_path(address), class: "btn btn-danger", method: :delite, "data-confirm" => "本当に消しますか？" %>
+                  <%= link_to "削除する", address_path(address), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
                 </td>
               </tr>
             <% end %>
