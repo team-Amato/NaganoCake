@@ -1,0 +1,82 @@
+<div><%= flash[:notice] %></div>
+<% if @address.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= @address.errors.count %> error prohibited this book from being saved:</h3>
+    <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="row pt-5">
+    <h4>配送先登録/一覧</h4>
+    <div class="col-md-10 pt-3 offset-md-1 pt-5">
+      <%= form_with model: @address, url: addresses_path do |f| %>
+          <table>
+            <tr>
+              <th>
+                <%= f.label :郵便番号（ハイフンなし） %>
+              </th>
+              <td></td>
+              <td>
+                <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code", placeholder: "0000000"  %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= f.label :住所 %>
+              </th>
+              <td></td>
+              <td>
+                <%= f.text_field :address, autofocus: true, size: "30x20", autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0"  %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= f.label :宛名 %>
+              </th>
+              <td></td>
+              <td>
+                <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "令和道子"  %>
+              </td>
+              <td>
+                <button type="submit" class="btn btn-success">新規登録</button>
+              </td>
+            </tr>
+          </table>
+        
+        <div class="shipping_address pt-5">
+          <table class="table table-bordered">
+            <tr>
+              <th>
+                <%= f.label :郵便番号（ハイフンなし） %>
+              </th>
+              <th>
+                <%= f.label :住所 %>
+              </th>
+              <th>
+                <%= f.label :宛名 %>
+              </th>
+              <th></th>
+            </tr>
+          
+            <% @addresses.each do |address| %>
+              <tr>
+                <td><%= address.post_code %></td>
+                <td><%= address.address %></td>
+                <td><%= address.name %></td>
+                <td>
+                  <%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
+                  <%= link_to "削除する", address_path(address), class: "btn btn-danger", method: :delite, "data-confirm" => "本当に消しますか？" %>
+                </td>
+              </tr>
+            <% end %>
+          </div>
+          </table>
+      <% end %>
+    </div>
+  </div>
+</div>
