@@ -1,6 +1,6 @@
  <body>
-    <div class="container">
-      <div class = "row">
+    <div class="container-fluid">
+      <div class = "row px-5">
         <div class="col-3">
           <%= render 'public/searches/genre', genres: @genres %>
         </div>
@@ -15,11 +15,9 @@
 
           <h4 class="new-item">新着商品</h4>
             繰り返しで商品を表示<br>
-            <div class = 'link text-right link-dark'>
-              <%= link_to items_path do %>
-                  全ての商品を見る＞
-              <% end %>
-            </div>
+            <h5 class = 'link text-center'>
+              <%= link_to "全ての商品を見る＞", items_path ,class: 'all-item', style: "color:#660000" %>
+            </h5>
         </div>
       </div>
     </div>
