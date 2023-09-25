@@ -12,10 +12,10 @@
                 <th>注文ステータス</th>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+                <td><%= @order.name %></td>
+                <td><%= @order.count%></td>
+                <td><%= @order.order_stutas %></td>
             </tr>
         </table>
         </div>
