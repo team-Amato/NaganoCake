@@ -3,12 +3,13 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = current_customer.cart_items
+    @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal}
   end
 
   def create
     # 同じ商品が既にある場合の処理
     # 同一商品のレコードをcart_itemからfind_byで検索
-    @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]) 
+    @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
     if @cart_item
       @amount = @cart_item.amount.to_i + params[:cart_item][:amount].to_i
       @cart_item.update(amount: @amount)
@@ -17,6 +18,12 @@ class Public::CartItemsController < ApplicationController
       @cart_item.customer_id = current_customer.id
       @cart_item.save
     end
+    redirect_to cart_items_path
+  end
+
+  def update
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
     redirect_to cart_items_path
   end
 
