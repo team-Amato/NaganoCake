@@ -10,33 +10,43 @@
           <tbody>
 
             <tr>
-              <th>商品画像</th>
-              <td><%= f.file_field :item_image, class: "block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %><td>
-            </tr>
-
-            <tr>
-              <th>商品名</th>
-              <td><%= f.text_field :name, class: "form-control" %></td>
-            </tr>
-
-            <tr>
-              <th>商品説明</th>
-              <td><%= f.text_area :explanation, rows: "5", class: "form-control" %></td>
-            </tr>
-
-            <tr>
-              <th>ジャンル</th>
-              <td><%= f.collection_select :genre_id, Genre.all ,:id, :name, include_blank: "--選択してください--" %></td>
-            <tr>
-
-            <tr>
-              <th>税抜価格</th>
-              <td><%= f.text_field :price, class: "form-control" %></td>
-            </tr>
-
-            <tr>
-              <th>販売ステータス</th>
               <td>
+              商品画像
+              <%= f.file_field :item_image, class: "block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+              商品名
+              <%= f.text_field :name, class: "form-control" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+              商品説明
+              <%= f.text_area :explanation, rows: "5", class: "form-control" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+              ジャンル
+              <%= f.collection_select :genre_id, Genre.all ,:id, :name, include_blank: "--選択してください--" %>
+              </td>
+            <tr>
+
+            <tr>
+              <td>
+              税抜価格
+              <%= f.text_field :price, class: "form-control" %>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+              販売ステータス
               <%= f.radio_button :is_active,true %>
               <%= f.label :is_active,"販売中" %>
               <%= f.radio_button :is_active,false %>
