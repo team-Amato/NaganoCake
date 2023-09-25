@@ -9,23 +9,23 @@
         <table class="table">
           <tbody>
             <tr>
-              <td>商品名</td>
+              <td class="text-center">商品名</td>
               <td><%= @item.name %></td>
             </tr>
             <tr>
-              <td>商品説明</td>
+              <td class="text-center">商品説明</td>
               <td><%= @item.explanation %></td>
             </tr>
             <tr>
-              <td>ジャンル</td>
+              <td class="text-center">ジャンル</td>
               <td><%= @item.genre.name %></td>
             </tr>
             <tr>
-              <td>税込価格</td>
+              <td class="text-center">税込価格</td>
               <td><%= (@item.price).floor.to_s(:delimited, delimiter: ',') %>円</td>
             </tr>
             <tr>
-              <td>販売ステータス</td>
+              <td class="text-center">販売ステータス</td>
               <td>
               <% if @item.is_active %>
               販売中
