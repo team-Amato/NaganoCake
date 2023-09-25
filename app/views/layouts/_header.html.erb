@@ -32,29 +32,29 @@
             <% end %>
           </li>
         <% elsif admin_signed_in? %>
-            <li>
+          <li>
             <%=  link_to items_path,class: 'nav-link text-light' do %>
               商品一覧
             <% end %>
           </li>
-            <li>
-              <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
-              　顧客一覧
-              <% end %>
-            </li>
-            <li>
-              <%= link_to admin_path,class: 'nav-link text-light' do %>
-              　注文履歴一覧
-              <% end %>
-            </li>
-            <li>
-              <%= link_to admin_genres_path,class: 'nav-link text-light' do %>
-              　ジャンル
-              <% end %>
-            </li>
+          <li>
+            <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
+              顧客一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_path,class: 'nav-link text-light' do %>
+              注文履歴一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_genres_path,class: 'nav-link text-light' do %>
+             ジャンル
+            <% end %>
+          </li>
           <li>
             <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
-            ログアウト
+             ログアウト
             <% end %>
           </li>
           
