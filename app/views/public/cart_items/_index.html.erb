@@ -1,0 +1,22 @@
+<table class = "table">
+　  <thead>
+　    <tr>
+　      <th>商品名</th>
+　      <th>単価(税込)</th>
+　      <th>数量</th>
+　      <th>小計</th>
+　      <th></th>　<!--削除するボタン用-->
+　    </tr>
+　  </thead>
+
+　  <tbody>
+        <% cart_items.each do |cart_item| %>
+            <tr>
+                <td><%= cart_item.item.name %></td> <!--商品名-->
+                <td><%= cart_item.item.with_tax_price%></td> <!--単価(税込)-->
+                <td><%= cart_item.amount %></td> <!--数量-->
+                <td><%= cart_item.subtotal%></td> <!--小計-->
+            </tr>
+        <% end %>
+    </tbody>
+</table>
