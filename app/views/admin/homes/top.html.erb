@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5 mb-5">
   <div class="row">
     <div class="col-md-8 pt-3">
         <div class="col-md-12" style="background-color:#f5f5f5;">
@@ -12,10 +12,10 @@
                 <th>注文ステータス</th>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+                <td><%= @order.name %></td>
+                <td><%= @order.count%></td>
+                <td><%= @order.order_stutas %></td>
             </tr>
         </table>
         </div>

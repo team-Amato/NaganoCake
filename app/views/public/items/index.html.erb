@@ -1,15 +1,18 @@
-    <div class="container">
+<div class="container">
       <div class = "row">
         <div class="col-3">
-          ここにジャンルの部分テンプレート
+          <%= render 'public/searches/genre', genres: @genres %>
         </div>
-
         <div class="col-9">
           <h1>商品一覧</h1>(全<%= @item_counts %>件)
           <% @items.each do |item| %>
-            <td><%= image_tag item.get_item_image, size: '50x50' %></td> <br> <!--画像の表示-->
+            <%= link_to item_path(item) do %>
+              <td><%= image_tag item.get_item_image(200,200) %></td> <br> <!--画像の表示-->
+            <% end %>
             <td>¥<%= item.price %>円</td> <br> <!--値段の表示-->
-            <td><%= item.name %></td> <!--商品名の表示-->
+            <%= link_to item_path(item) do %>
+              <td><%= item.name %></td> <!--商品名の表示-->
+            <% end %>
           <% end %>
         </div>
       </div>
