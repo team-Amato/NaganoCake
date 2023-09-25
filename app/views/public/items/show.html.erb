@@ -2,14 +2,16 @@
       <div class = "row">
         <!--ジャンル検索-->
         <div class="col-3">
-          ここにジャンルの部分テンプレート
+           <%= render 'public/searches/genre', genres: @genres %>
         </div>
 
         <div class="col-9">
+
          <%= image_tag @item.get_item_image(100,100) %><!--商品画像-->
          <%= @item.name %> <!--商品名-->
          <%= @item.explanation %> <!--商品説明-->
-         <%= @item.price + @item.price * 0.1 %> <!--値段( 税抜価格＋ (税抜価格 ×  0.1))-->
+         <!--< @item.price + @item.price * 0.1 %> <!--値段( 税抜価格＋ (税抜価格 ×  0.1))-->
+          ¥<%= @item.with_tax_price.to_s(:delimited, delimiter: ',')%>(税込)
          <!--↓ここでカートに個数を渡す↓(未完成)-->
          <%= form_with(model: @cart_item, local: true) do |f| %>
           <div class="form-group">
