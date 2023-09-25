@@ -6,7 +6,7 @@
       <h4>マイページ</h4>
 
       <h4>登録情報
-        <%= link_to '編集する', customers_edit_path(@customer), class: "btn btn-success mb-4" %>
+        <%= link_to '編集する', customers_edit_path(@customer), class: "btn btn-success mb-2 btn-sm" %>
       </h4>
         <div class="table-responsive">
           <table class="table table-bordered">
@@ -32,11 +32,10 @@
             </tr>
           </table>
         </div>
-  
-        <%= link_to '配送先一覧表示', addresses_path, class: "btn btn-info mb-4" %><br>
-        <%= link_to '注文履歴一覧表示', orders_path, class: "btn btn-info mb-4" %>
+          <h4>配送先 <%= link_to '一覧表示', addresses_path, class: "btn btn-info  btn-sm" %></h4><br>
+          <h4>注文履歴 <%= link_to '一覧表示', orders_path, class: "btn btn-info btn-sm mb-2" %></h4>
 
-    </div>
+     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
