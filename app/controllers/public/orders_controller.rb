@@ -1,10 +1,12 @@
 class Public::OrdersController < ApplicationController
   def new
-    @cart_items = current_customer.cart_items
+  	@order = Order.new
+  	@customer = current_customer
+    @addresses = Address.where(customer_id: current_customer.id)
   end
 
   def create
-    customer = current_customer
+    @customer = current_customer
 
 		# sessionを使ってデータを一時保存
 		session[:order] = Order.new
@@ -14,7 +16,7 @@ class Public::OrdersController < ApplicationController
 		# total_paymentのための計算
 		sum = 0
 		cart_items.each do |cart_item|
-			sum += (cart_item.item.price_without_tax * 1.1).floor * cart_item.quantity
+			sum += (cart_item.item.with_tax_price) .cart_item.amount
 		end
 
 		session[:order][:postage] = 800
@@ -56,23 +58,18 @@ class Public::OrdersController < ApplicationController
 		if session[:order][:post_code].presence && session[:order][:address].presence && session[:order][:name].presence
 			redirect_to new_order_path
 		else
-			redirect_to new_order_path
+			redirect_to orders_confirm_path
 		end
-
   end
 
   def index
      @orders = Order.where(member_id: current_member.id).order(created_at: :desc).#注文履歴を降順で並べる
   end
 
-  def show
-    @order = Order.find(params[:id])
-    @order_details= OrderDetail.where(order_id: @order.id)
-  end
-
   def confirm
-    order = Order.new(session[:order])
-		order.save
+    @order = Order.new(session[:order])
+    @cart_items = current_customer.cart_items
+		@order.save
 
 		if session[:new_address]
 			shipping_address = current_customer.shipping_addresses.new
@@ -98,9 +95,20 @@ class Public::OrdersController < ApplicationController
 		# 購入後はカート内商品削除
 		cart_items.destroy_all
   end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_details= OrderDetail.where(order_id: @order.id)
   end
 
   def thanks
   end
 
+  end
+
+   private
+
+  def orders_params
+    params.require(:orders).permit(:customer_id, :post_code, :name, :address, :payment_method, :status, :postage, :total_price)
+  end
 end
