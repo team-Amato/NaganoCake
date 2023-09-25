@@ -42,6 +42,14 @@
 
 <div>合計金額 <%= @total %></div>
 
+<%= link_to items_path, method: :delete do %>
+    <button type="button" class="btn-primary text-light">買い物を続ける</button>
+<% end %>
+
+<%= link_to items_path do %>
+    <button type="button" class="btn-success text-light">情報入力に進む</button>
+<% end %>
+
 <!--<render 'index',cart_items: @cart_items %>-->
 
 
