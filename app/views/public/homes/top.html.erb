@@ -5,16 +5,17 @@
           ここにジャンルの部分テンプレート
         </div>
         <!--ECサイト説明部分-->
-        <div class="col-9"　"top_explanation">
-          <h2>ようこそ、NaganoCakeへ！<br>
-            このサイトは、ケーキ販売のECサイトになります。<br>
-            会員でない方も商品の閲覧はできますが、<br>
-            購入には会員登録が必要になります。<br>
-          </h2>
+        <div class="box col-9 top_explanation">
+          <div class="box-text">
+            <h3>ようこそ、NaganoCakeへ！</h3>
+            <p>このサイトは、ケーキ販売のECサイトになります。</p>
+            <p>会員でない方も商品の閲覧はできますが、</p>
+            <p>購入には会員登録が必要になります。</p>
+          </div>
 
-          <h4>新着商品</h4>
+          <h4 class="new-item">新着商品</h4>
             繰り返しで商品を表示<br>
-            <div class = 'text-right'>
+            <div class = 'link text-right link-dark'>
               <%= link_to items_path do %>
                   全ての商品を見る＞
               <% end %>
