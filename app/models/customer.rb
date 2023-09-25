@@ -6,4 +6,8 @@ class Customer < ApplicationRecord
   has_many :addresses, dependent: :destroy
   has_many :order, dependent: :destroy
   validates :password, presence: true, on: :create
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end  
 end

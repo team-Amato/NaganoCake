@@ -50,7 +50,7 @@
         
         <div class="shipping_address pt-5">
           <table class="table table-bordered">
-            <tr>
+            <tr class="table-active">
               <th>
                 <%= f.label :郵便番号（ハイフンなし） %>
               </th>
@@ -68,14 +68,14 @@
                 <td><%= address.post_code %></td>
                 <td><%= address.address %></td>
                 <td><%= address.name %></td>
-                <td>
+                <td class="text-center	">
                   <%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
-                  <%= link_to "削除する", address_path(address), class: "btn btn-danger", method: :delite, "data-confirm" => "本当に消しますか？" %>
+                  <%= link_to "削除する", address_path(address), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
                 </td>
               </tr>
             <% end %>
-          </div>
           </table>
+        </div>
       <% end %>
     </div>
   </div>
