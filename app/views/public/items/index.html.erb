@@ -1,9 +1,8 @@
-    <div class="container">
+<div class="container">
       <div class = "row">
         <div class="col-3">
           <%= render 'public/searches/genre', genres: @genres %>
         </div>
-
         <div class="col-9">
           <h1>商品一覧</h1>(全<%= @item_counts %>件)
           <% @items.each do |item| %>
