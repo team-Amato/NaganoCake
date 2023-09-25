@@ -1,3 +1,13 @@
 // Place all the styles related to the public/searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.genre_search {
+  background-color: #FFFFCC;
+  border: 2px dashed #6b4033;
+  border-radius: 8px;
+  box-shadow: 0 0 0 7px #FFFFCC;
+  color: #fff;
+  margin: 2em 0;
+  padding: 2em;
+}
