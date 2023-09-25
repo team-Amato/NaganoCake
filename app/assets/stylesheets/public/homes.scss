@@ -26,11 +26,18 @@ body {
           color: #FFFFCC;
           font-family: 'メイリオ','MS ゴシック','游ゴシック Medium',sans-serif;
           margin: 20px 20px;
-          border: dashed 2px white;
+          border: 4px double #FFFFCC;
           width: 130px;
-          padding: 0.2em 0.5em;
-        }
-    
+          text-align: center;
+          }
+           .link {
+            font-family: 'メイリオ','MS ゴシック','游ゴシック Medium',sans-serif;
+            margin: 0 0 0 auto;
+            border: 4px double #6b4033 ;
+            width: 170px;
+            text-align: center;
+            font-weight: bold;
+    }
   }
 }
 
