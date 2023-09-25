@@ -1,5 +1,7 @@
 class Public::CartItemsController < ApplicationController
 
+  before_action :setup_item!, only: [:create]
+
   def index
     @cart_items = current_customer.cart_items
   end
@@ -24,8 +26,15 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
+
   private
+
   def cart_item_params
       params.require(:cart_item).permit(:item_id, :amount)
+  end
+
+  def setup_item
+    byebug
+    @cart_item = CartItem.find_by(item_id: params[:item_id])
   end
 end
