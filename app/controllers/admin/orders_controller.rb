@@ -1,5 +1,6 @@
 class Admin::OrdersController < ApplicationController
   def show
+    @order = Order.find(params[:id])
     @orders = Order.all
   end
   
@@ -11,6 +12,10 @@ class Admin::OrdersController < ApplicationController
       ## ①注文ステータスが「入金確認」とき、製作ステータスを全て「製作待ち」に更新する
     end
     redirect_to admin_order_path(@order)
+  end
+  
+  def subtotal_price
+      price*1.1
   end
   
   private
