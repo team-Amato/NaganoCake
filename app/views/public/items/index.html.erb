@@ -1,16 +1,23 @@
     <div class="container">
       <div class = "row">
+        <head>
+        <%= stylesheet_link_tag 'items', media: 'all', 'data-turbolinks-track': 'reload' %>
+      　</head>
         <div class="col-3">
-          ここにジャンルの部分テンプレート
+          <%= render 'public/searches/genre', genres: @genres %>
         </div>
 
         <div class="col-9">
           <h1>商品一覧</h1>(全<%= @item_counts %>件)
           <% @items.each do |item| %>
-            <td><%= image_tag item.get_item_image, size: '50x50' %></td> <br> <!--画像の表示-->
-            <td>¥<%= item.price %>円</td> <br> <!--値段の表示-->
-            <td><%= item.name %></td> <!--商品名の表示-->
+            <div class="parent-col3">
+              <div class="child">
+              <%= image_tag item.get_item_image(200,200) %> <br> <!--画像の表示-->
+              <%= item.price %>円 <br> <!--値段の表示-->
+              <%= item.name %> <!--商品名の表示-->
+              </div>
+            </div>
           <% end %>
-        </div>
+        
       </div>
     </div>

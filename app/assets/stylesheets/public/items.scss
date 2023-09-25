@@ -1,3 +1,20 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.parent-col3 { 
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+  
+  .child {
+  width: 28% ;
+}
+}
+
+.parent-col3::after {
+  content: "";
+  display:block;
+  width:28%;
+}
