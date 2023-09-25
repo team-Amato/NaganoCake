@@ -21,15 +21,14 @@
         <% @cart_items.each do |cart_item| %>
             <tr>
                 <td><%= cart_item.item.name %></td> <!--商品名-->
-                <td><%= cart_item.item.with_tax_price%></td> <!--単価(税込)-->
-                <td><%= cart_item.amount %></td> <!--数量-->
+                <td><%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',')%></td> <!--単価(税込)-->
                 <td>
                     <%= form_with model:cart_item, url:cart_item_path(cart_item.id) , local:true do |f| %>
                         <%= f.select :amount, *[1..10] %>
                         <%= f.submit "変更" , class: "btn btn-success" %>
                     <% end %>
                 </td>
-                <td><%= cart_item.subtotal%></td> <!--小計-->
+                <td><%= cart_item.subtotal.to_s(:delimited, delimiter: ',')%></td> <!--小計-->
                 <td>
                     <%= link_to cart_item_path(cart_item.id), method: :delete do %>
                         <button type="button" class="btn btn-danger text-light">削除する</button><!--削除ボタン-->
@@ -40,9 +39,9 @@
     </tbody>
 </table>
 
-<div>合計金額 <%= @total %></div>
+<div>合計金額 <%= @total.to_s(:delimited, delimiter: ',') %></div>
 
-<%= link_to items_path, method: :delete do %>
+<%= link_to items_path do %>
     <button type="button" class="btn-primary text-light">買い物を続ける</button>
 <% end %>
 
