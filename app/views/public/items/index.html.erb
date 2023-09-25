@@ -1,8 +1,5 @@
     <div class="container">
       <div class = "row">
-        <head>
-        <%= stylesheet_link_tag 'items', media: 'all', 'data-turbolinks-track': 'reload' %>
-      　</head>
         <div class="col-3">
           <%= render 'public/searches/genre', genres: @genres %>
         </div>
@@ -10,14 +7,10 @@
         <div class="col-9">
           <h1>商品一覧</h1>(全<%= @item_counts %>件)
           <% @items.each do |item| %>
-            <div class="parent-col3">
-              <div class="child">
-              <%= image_tag item.get_item_image(200,200) %> <br> <!--画像の表示-->
-              <%= item.price %>円 <br> <!--値段の表示-->
-              <%= item.name %> <!--商品名の表示-->
-              </div>
-            </div>
+            <td><%= image_tag item.get_item_image(200,200) %></td> <br> <!--画像の表示-->
+            <td>¥<%= item.price %>円</td> <br> <!--値段の表示-->
+            <td><%= item.name %></td> <!--商品名の表示-->
           <% end %>
-        
+        </div>
       </div>
     </div>
