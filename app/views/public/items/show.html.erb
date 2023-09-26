@@ -1,26 +1,30 @@
-    <div class="container">
-      <div class = "row">
-        <!--ジャンル検索-->
-        <div class="col-3">
-           <%= render 'public/searches/genre', genres: @genres %>
-        </div>
-
-        <div class="col-9">
-         <%= image_tag @item.get_item_image(500,500) %><!--商品画像-->
-         <%= @item.name %> <!--商品名-->
-         <%= @item.explanation %> <!--商品説明-->
-         <!--< @item.price + @item.price * 0.1 %> <!--値段( 税抜価格＋ (税抜価格 ×  0.1))-->
-          ¥<%= @item.with_tax_price.to_s(:delimited, delimiter: ',')%>(税込)
-          <!--サインインしていたらカート機能を使えるようにする-->
-          <% if customer_signed_in? %>
-           <%= form_with(model: @cart_item, local: true) do |f| %>
-            <div class="form-group">
-              <%= f.select :amount, *[1..10], { include_blank: "個数選択"}, {required: true } %><!--個数選択プルダウン-->
-              <%= f.hidden_field :item_id, :value => @item.id %>
-            </div>
-              <%= f.submit "カートに入れる" %> <!--カートに入れるボタン-->
-          <% end %>
-         <% end %>
-        </div>
-      </div>
+<div class="container mt-5">
+  <div class = "row">
+    <!--ジャンル検索-->
+    <div class="col-3">
+        <%= render 'public/searches/genre', genres: @genres %>
     </div>
+
+    <div class="col-6">
+      <%= image_tag @item.get_item_image(500,500) %><!--商品画像-->
+    </div>
+    <div class="col-3">
+      <h4 class="item-name", style="font-weight:bold"><%= @item.name %></h4> <!--商品名-->
+      <%= @item.explanation %> <!--商品説明-->
+        <!--< @item.price + @item.price * 0.1 %> <!--値段( 税抜価格＋ (税抜価格 ×  0.1))-->
+      <h4 class="item-price mt-5">
+        ¥<%= @item.with_tax_price.to_s(:delimited, delimiter: ',')%>(税込)
+         <!--サインインしていたらカート機能を使えるようにする-->
+      </h4>
+        <% if customer_signed_in? %>
+          <%= form_with(model: @cart_item, local: true) do |f| %>
+          <div class="form-group mt-4">
+            <%= f.select :amount, *[1..10], { include_blank: "個数選択"}, {required: true } %><!--個数選択プルダウン-->
+            <%= f.hidden_field :item_id, :value => @item.id %>
+          </div>
+            <%= f.submit "カートに入れる", class: 'btn btn-success' %> <!--カートに入れるボタン-->
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>

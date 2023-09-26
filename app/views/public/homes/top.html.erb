@@ -5,25 +5,34 @@
           <%= render 'public/searches/genre', genres: @genres %>
         </div>
         <!--ECサイト説明部分-->
-        <div class="box col-9 top_explanation">
+        <div class="box col-9 top_explanation pt-5">
           <div class="box-text">
             <h3>ようこそ、NaganoCakeへ！</h3>
             <p>このサイトは、ケーキ販売のECサイトになります。</p>
             <p>会員でない方も商品の閲覧はできますが、</p>
             <p>購入には会員登録が必要になります。</p>
           </div>
-
-          <h4 class="new-item">新着商品</h4>
-            <% @items.each do |item| %>
-              <%= link_to item_path(item) do %>
-                <%= image_tag item.get_item_image(100,100) %><!--商品画像-->
-              <% end %>
-              <%= item.name %><!--商品名-->
-              <%= item.price %>
+          <div class = "container pt-5">
+          　<h4 class="new-item">新着商品</h4>
+            <div class = "row pt-2">
+          　<% @items.first(3).each do |item| %>
+              <div class="col-3">
+                <div class="item-image">
+                  <%= link_to item_path(item) do %>
+                    <%= image_tag item.get_item_image(200,200) %> <!--画像の表示-->
+                  <% end %>
+                  <div class="item">
+                   <%= item.name %></br>
+                   ¥<%= item.price %>円 <!--値段の表示-->
+                  </div>
+                </div>
+              </div>
             <% end %>
-            <h5 class = 'link text-center'>
-              <%= link_to "全ての商品を見る＞", items_path ,class: 'all-item', style: "color:#660000" %>
-            </h5>
+            </div>
+          </div>
+          <h5 class = 'link text-center pb-3'>
+            <%= link_to "全ての商品を見る＞", items_path ,class: 'all-item', style: "color:#660000" %>
+          </h5>
         </div>
       </div>
     </div>
