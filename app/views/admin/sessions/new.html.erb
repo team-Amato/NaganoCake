@@ -4,22 +4,24 @@
       <div class="col-md-8">
         <table>
           <h4>管理者ログイン</h4><br>
-            <tr>
-              <td>
                 <div class="text-center">
                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                  <tr>
                   <div class="field">
-                    <%= f.label :メールアドレス %>
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                    <td><%= f.label :メールアドレス %></td>
+                    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
                   </div>
-                  </td>
-                  <div class="field">
-                    <%= f.label :パスワード %>
-                    <%= f.password_field :password, autocomplete: "current-password" %>
-                  </div>
-                
+                  </tr>
+                  <tr>
+                    <div class="field">
+                      <td><%= f.label :パスワード %></td>
+                      <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+                    </div>
+                </tr>
+                <tr>
                   <div class="actions">
-                    <%= f.submit "ログイン", class: "btn btn-primary mb-4"%>
+                    <td></td>
+                    <td><%= f.submit "ログイン", class: "btn btn-primary mb-4"%></td>
                   </div>
                 <% end %>
               </tr>

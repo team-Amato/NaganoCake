@@ -13,27 +13,26 @@
                       <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
                     </div>
                   </tr>
-          
-                <tr>
-                  <div class="field">
-                    <td><%= f.label :パスワード %>
-                    <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-                  </div>  
-                </tr>
-                <tr>
-                  <div class="actions", >
-                     <td></td>
-                     <td><%= f.submit "ログイン", class: "btn btn-primary mb-4" %></td>
-                  </div>
+                  <tr>
+                    <div class="field">
+                      <td><%= f.label :パスワード %>
+                      <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+                    </div>  
+                  </tr>
+                  <tr>
+                    <div class="actions", >
+                       <td></td>
+                       <td><%= f.submit "ログイン", class: "btn btn-primary mb-4" %></td>
+                    </div>
                 <% end %>
                   <tr>
                     <td><h5>会員登録がお済みでない方</h5></td>
-                  <td>
-                    <h5>
-                      <%= link_to "こちら", new_customer_registration_path %>
-                      から新規登録してください。
-                    </h5>
-                  </td>
+                    <td>
+                      <h5>
+                        <%= link_to "こちら", new_customer_registration_path %>
+                        から新規登録してください。
+                      </h5>
+                    </td>
                   </tr>
           </table>  
       </div>
