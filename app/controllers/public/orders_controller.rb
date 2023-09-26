@@ -89,8 +89,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order_new = Order.new
     @order = Order.find(params[:id])
+    @orders = Order.all
     @order_details= OrderDetail.where(order_id: @order.id)
+    @order_details_all = @order.order_details.all
+    @total_item_amount = @order_details.sum { |order_detail| order_detail.subtotal }
+  end
+  end
+  
+  def update
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: params[:id])
+  if @order.update(order_params)
+    @order_details.update_all(making_status: 1) if @order.status == "payment_confirmation"
+    ## ①注文ステータスが「入金確認」とき、製作ステータスを全て「製作待ち」に更新する
+  end
+    redirect_to admin_order_path(@order)
   end
 
   def thanks
@@ -99,7 +114,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def orders_params
-    params.require(:order).permit(:customer_id, :post_code, :name, :address, :payment_method, :status, :postage, :total_price)
+    params.require(:order).permit(:customer_id, :post_code, :name, :address, :payment_method, :status, :postage, :total_price, :status, :purchase_price)
   end
 
 end
