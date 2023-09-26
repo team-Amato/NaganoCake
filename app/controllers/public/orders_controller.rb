@@ -12,17 +12,18 @@ class Public::OrdersController < ApplicationController
 
 		@order = current_customer.order.new(orders_params)
     if @order.save
-			cart_items.each do |cart|
-			order_item = OrderItem.new
+			@cart_items.each do |cart|
+			order_item = OrderDetail.new
       order_item.item_id = cart.item_id
       order_item.order_id = @order.id
-      order_item.order_amount = cart.amount
+      order_item.amount = cart.amount
 
-      order_item.order_price = cart.item.price
+      order_item.purchase_price = cart.item.price
+      order_item.making_status = 0
       order_item.save
       end
     redirect_to orders_thanks_path
-    cart_items.destroy_all
+    @cart_items.destroy_all
     else
     @order = Order.new(order_params)
     render :new
@@ -66,10 +67,12 @@ class Public::OrdersController < ApplicationController
 			 ary << (cart_item.item.with_tax_price).floor * cart_item.amount
 		end
 		  @cart_items_price = ary.sum
-		  @postage = 800
-		  @total_price = @postage + @cart_items_price
+		  @order.postage = 800
+		  @order.status = 0
+		  @total_price = @order.postage + @cart_items_price
+		  @order.total_price = @total_price
 
-      session[:order][:payment_method] = params[:method].to_i
+      # session[:order][:payment_method] = params[:method].to_i
 
 		# 以下、order_detail作成
 		cart_items = current_customer.cart_items

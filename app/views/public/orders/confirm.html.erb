@@ -11,7 +11,6 @@
 　      <th></th>　<!--削除するボタン用-->
 　    </tr>
 　  </thead>
-
 　  <tbody>
         <% @cart_items.each do |cart_item| %>
         　<tr>
@@ -57,20 +56,32 @@
         <tr>
           <th  class="info">支払方法</th>
           <td class="text-left">
-            <%= session[:order]["payment_method"] %>
+            <%= @order.payment_method %>
+            <!--< session[:order]["payment_method"] %>-->
           </td>
         </tr>
         <tr>
           <th  class="info">お届け先</th>
           <td class="text-left">
-            <%= session[:order]["post_code"] %><br>
-            <%= session[:order]["address"] %><br>
-            <%= session[:order]["name"]  %>
+            <%= @order.post_code %>
+            <%= @order.address %>
+            <%= @order.name %>
+            <!--<= session[:order]["post_code"] %><br>-->
+            <!--<= session[:order]["address"] %><br>-->
+            <!--<= session[:order]["name"]  %>-->
           </td>
         </tr>
       </table>
-
-      <%= link_to "購入を確定する", orders_path, method: :post,class: 'btn btn-primary col-xs-12' %>
-
+      <%= form_with(model: @order, local: true) do |f| %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.hidden_field :post_code, :value =>@order.post_code %>
+      <%= f.hidden_field :address, :value => @order.address %>
+      <%= f.hidden_field :name, :value => @order.name %>
+      <%= f.hidden_field :payment_method, :value =>@order.payment_method %>
+      <%= f.hidden_field :status, :value => @order.status %>
+      <%= f.hidden_field :postage, :value => @order.postage %>
+      <%= f.hidden_field :total_price, :value => @order.total_price %>
+      <%= f.submit "購入を確定する", class: 'btn btn-primary col-xs-12' %>
+      <% end %>
     </div>
 </div>
