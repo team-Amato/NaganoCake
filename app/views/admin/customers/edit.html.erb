@@ -2,7 +2,6 @@
   <div class="row pt-5">
     <h4><%= @customer.last_name %> <%= @customer.first_name %>さんの会員情報編集</h4>
     <div class="col-md-10 pt-3 offset-md-1">
-
       <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
           <table>
             <tr>
