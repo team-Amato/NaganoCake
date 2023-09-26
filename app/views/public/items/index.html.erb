@@ -1,19 +1,35 @@
-    <div class="container">
-      <div class = "row">
-        <div class="col-3">
-          <%= render 'public/searches/genre', genres: @genres %>
-        </div>
-        <div class="col-9">
-          <h1>商品一覧</h1>(全<%= @item_counts %>件)
-          <% @items.each do |item| %>
-            <%= link_to item_path(item) do %>
-              <td><%= image_tag item.get_item_image(200,200) %></td> <br> <!--画像の表示-->
-            <% end %>
-              <td>¥<%= item.price %>円</td> <br> <!--値段の表示-->
-            <%= link_to item_path(item) do %>
-              <td><%= item.name %></td> <!--商品名の表示-->
-            <% end %>
-          <% end %>
+<div class="container mt-5">
+  <div class = "row", style="justify-content:center">
+    <div class="col-md-3">
+      <%= render 'public/searches/genre', genres: @genres %>
+    </div>
+    <div class="col-9">
+      <div>
+        <h4>商品一覧
+          <span class="item_counts", style="font-size:20px">(全<%= @item_counts %>件)</span>
+        </h4>
+      </div>
+      
+      
+      <div class = "container">
+        <div class = "row">
+        <% @items.each do |item| %>
+          <div class="col-3">
+            <div class="item-image">
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.get_item_image(200,200) %> <!--画像の表示-->
+              <% end %>
+              <div class="item">
+                <%= link_to item_path(item) do %>
+                  <%= item.name %></br><!--商品名の表示-->
+                <% end %>
+                ¥<%= item.price %>円 <!--値段の表示-->
+              </div>
+            </div>
+          </div>
+        <% end %>
         </div>
       </div>
     </div>
+  </div>
+</div>
