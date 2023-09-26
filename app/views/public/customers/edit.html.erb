@@ -1,27 +1,90 @@
-<h5>会員情報編集</h5>
+<div class="container mt-5 mb-5">
+  <div class="row">
+      <div class="col-md-10 pt-3 offset-md-1">
+        <h4>会員情報編集</h4>
+          <table>
+            <%= form_with model: @customer, url: "/customers", local:true do |f| %>
+            <tr>
+              <th>
+                <%= f.label :名前 %>
+              </th>
+              <td>
+                <%= f.label :（姓） %>
+              </td>
+              <td>
+                <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "令和" %>
+              </td>
+              <td>
+                <%= f.label :（名） %>
+              </td>
+              <td>
+                <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= f.label :フリガナ %>
+              </th>
+              <td>
+                <%= f.label :（セイ）%>
+              </td>
+              <td>
+                <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
+              </td>
+              <td>
+                <%= f.label :（メイ）%>
+              </td>
+              <td>
+                <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= f.label :メールアドレス %>
+              </th>
+              <td></td>
+              <td>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email"%>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= f.label :郵便番号 %>
+              </th>
+              <td></td>
+              <td>
+                <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code"  %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= f.label :住所 %>
+              </th>
+              <td></td>
+              <td>
+                <%= f.text_field :address, autofocus: true, size: "30x20", autocomplete: "address"  %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= f.label :電話番号（ハイフンなし）%>
+              </th>
+              <td></td>
+              <td>
+                <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "0000000000"  %>
+              </td>
+              <tr>
+                <td></td>
+                <td></td>
+              <td>  
+                <%= f.submit '編集内容を保存', class:"btn btn-success" %>
+                <%= link_to "退会する",customers_check_path,class:"btn btn-danger" %>
+              </td> 
+              </tr>
+          <% end %>
+        </table>  
+      </div>
+  </div>
+</div>
 
-<%= form_with model: @customer, url: "/customers", local:true do |f| %>
-
-  <h4>氏名</h4>
-  <%= f.text_field :first_name %>
-  <%= f.text_field :last_name %>
-
-  <h4>フリガナ</h4>
-  <%= f.text_field :first_name_kana %>
-  <%= f.text_field :last_name_kana %>
-
-  <h4>郵便番号</h4>
-  <%= f.text_field :post_code %>
-
-  <h4>住所</h4>
-  <%= f.text_field :address %>
-
-  <h4>電話番号</h4>
-  <%= f.text_field :phone_number %>
-
-  <h4>メールアドレス</h4>
-  <%= f.email_field :email %>
-
-  <%= f.submit '保存' %>
-
-<% end %>
+      
