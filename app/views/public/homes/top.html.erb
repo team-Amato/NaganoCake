@@ -14,7 +14,12 @@
           </div>
 
           <h4 class="new-item">新着商品</h4>
-            繰り返しで商品を表示<br>
+            <% @items.each do |item| %>
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.get_item_image(100,100) %><!--商品画像-->
+              <% end %>
+              <%= item.name %><!--商品名-->
+            <% end %>
             <h5 class = 'link text-center'>
               <%= link_to "全ての商品を見る＞", items_path ,class: 'all-item', style: "color:#660000" %>
             </h5>
