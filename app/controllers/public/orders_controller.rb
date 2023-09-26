@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
 		@cart_items = current_customer.cart_items.all
 
-		@order = current_customer.orders.new(order_params)
+		@order = current_customer.order.new(orders_params)
     if @order.save
 			cart_items.each do |cart|
 			order_item = OrderItem.new
@@ -30,7 +30,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.where(member_id: current_member.id).order(created_at: :desc)#注文履歴を降順で並べる
+    @orders = Order.where(member_id: current_member).order(created_at: :desc)#注文履歴を降順で並べる
   end
 
   def confirm
@@ -60,7 +60,6 @@ class Public::OrdersController < ApplicationController
     else
       redirect_to orders_confirm_path
     end
-      @cart_items = current_customer.cart_items.all
 
       ary = []
 		  @cart_items.each do |cart_item|
@@ -84,8 +83,6 @@ class Public::OrdersController < ApplicationController
 			order_detail.save
 		end
 
-		# 購入後はカート内商品削除
-		cart_items.destroy_all
   end
 
   def show
