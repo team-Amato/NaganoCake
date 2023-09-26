@@ -2,9 +2,13 @@
 <h1>ショッピングカート</h1>
 
 <!--カートを空にするボタン-->
-<%= link_to cart_items_destroy_all_path, method: :delete do %>
-    <button type="button" class="btn btn-danger text-light">カートを空にする</button>
-<% end %>
+
+    <%= link_to cart_items_destroy_all_path, method: :delete do %>
+        <div class = "text-right">
+            <button type="button" class="btn btn-danger text-light">カートを空にする</button>
+        </div>
+    <% end %>
+
 
 <table class = "table">
 　  <thead>
@@ -21,7 +25,7 @@
         <% @cart_items.each do |cart_item| %>
             <tr>
                 <td>
-                    <%= image_tag cart_item.get_item_image(100,100) %><!--商品画像-->
+                    <%= image_tag cart_item.item.get_item_image(100,100) %><!--商品画像-->
                     <%= cart_item.item.name %><!--商品名-->
                 </td>
                 <td><%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',')%></td> <!--単価(税込)-->
