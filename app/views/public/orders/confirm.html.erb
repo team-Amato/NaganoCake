@@ -15,15 +15,15 @@
 　  <tbody>
         <% @cart_items.each do |cart_item| %>
             <tr>
-                <td><%= cart_item.item.name %></td> <!--商品名-->
-                <td><%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',')%></td> <!--単価(税込)-->
+                <td><%= cart_item.name %></td> <!--商品名-->
+                <td><%= (cart_item.price).to_s(:delimited) %></td> <!--単価(税込)-->
                 <td>
                     <%= form_with model:cart_item, url:cart_item_path(cart_item.id) , local:true do |f| %>
                         <%= f.select :amount, *[1..10] %>
                         <%= f.submit "変更" , class: "btn btn-success" %>
                     <% end %>
                 </td>
-                <td><%= cart_item.subtotal.to_s(:delimited, delimiter: ',')%></td> <!--小計-->
+                <%= (cart_item.price*cart.quantity).to_s(:delimited) %></td> <!--小計-->
                 <td>
                     <%= link_to cart_item_path(cart_item.id), method: :delete do %>
                         <button type="button" class="btn btn-danger text-light">削除する</button><!--削除ボタン-->
@@ -40,19 +40,19 @@
             <th class="info">配送料</th>
             <td class="text-right col-xs-5">
               <!-- sessiomのデータを表示する場合、カラム名に""つける -->
-              ¥<%= session[:order]["postage"].to_s(:delimited, delimiter: ',') %>
+              ¥<%= @postage %>
             </td>
           </tr>
           <tr>
             <th class="info">商品合計</th>
             <td class="text-right">
-              ¥<%= (session[:order]["total_payment"] - session[:order]["postage"]).to_s(:delimited, delimiter: ',') %>
+              ¥<%= @cart_items_price .to_s(:delimited, delimiter: ',') %>
             </td>
           </tr>
           <tr>
             <th class="info">請求金額</th>
             <td class="text-right">
-              ¥<%= session[:order]["total_payment"].to_s(:delimited, delimiter: ',') %>
+              ¥<%= @total_price .to_s(:delimited, delimiter: ',') %>
             </td>
           </tr>
       </table>
