@@ -3,8 +3,8 @@
     <div class="col-md-2"></div>
       <div class="col-md-8">
           <h4>ログイン</h4>
-            <h5>会員の方はこちらからログイン</h5>
-            <table>
+          <table>
+            <td>会員の方はこちらからログイン</td>
               <div class="text-left">
                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                   <tr>
@@ -15,7 +15,7 @@
                   </tr>
                   <tr>
                     <div class="field">
-                      <td><%= f.label :パスワード %>
+                      <td><%= f.label :パスワード %></td>
                       <td><%= f.password_field :password, autocomplete: "current-password" %></td>
                     </div>  
                   </tr>
@@ -25,16 +25,13 @@
                        <td><%= f.submit "ログイン", class: "btn btn-primary mb-4" %></td>
                     </div>
                 <% end %>
-                  <tr>
-                    <td><h5>会員登録がお済みでない方</h5></td>
-                    <td>
-                      <h5>
-                        <%= link_to "こちら", new_customer_registration_path %>
+                </table>
+                 <div class="text-left">会員登録がお済みでない方</div>
+                    <%= link_to "こちら", new_customer_registration_path %>
                         から新規登録してください。
-                      </h5>
-                    </td>
-                  </tr>
-          </table>  
+                  </div>      
+                </div>
+            
       </div>
     <div class="col-md-2"></div>
   </div>
