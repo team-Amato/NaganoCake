@@ -17,7 +17,6 @@ class Public::OrdersController < ApplicationController
       order_item.item_id = cart.item_id
       order_item.order_id = @order.id
       order_item.amount = cart.amount
-
       order_item.purchase_price = cart.item.price
       order_item.making_status = 0
       order_item.save
@@ -31,7 +30,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.where(member_id: current_member).order(created_at: :desc)#注文履歴を降順で並べる
+    @orders = Order.all.order(created_at: :desc)#注文履歴を降順で並べる
   end
 
   def confirm
@@ -71,21 +70,6 @@ class Public::OrdersController < ApplicationController
 		  @order.status = 0
 		  @total_price = @order.postage + @cart_items_price
 		  @order.total_price = @total_price
-
-      # session[:order][:payment_method] = params[:method].to_i
-
-		# 以下、order_detail作成
-		cart_items = current_customer.cart_items
-		cart_items.each do |cart_item|
-			order_detail = OrderDetail.new
-			order_detail.order_id = @order.id
-			order_detail.item_id = cart_item.item.id
-			order_detail.amount = cart_item.amount
-			order_detail.making_status = 0
-			order_detail.purchase_price = (cart_item.item.price * 1.1).floor
-			order_detail.save
-		end
-
   end
 
   def show
