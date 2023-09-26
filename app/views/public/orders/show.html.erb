@@ -14,7 +14,7 @@
               <tr>
                 <th class="info">配送先</th>
                 <td class="text-left">
-                  <%= @order.post_code %><br>
+                  〒<%= @order.post_code %><br>
                   <%= @order.address %><br>
                   <%= @order.name %>
                 </td>
@@ -47,13 +47,13 @@
             <tr>
               <th class="info">商品合計</th>
               <td class="col-xs-5">
-                ¥<%= (@order.total_payment - @order.postage).to_s(:delimited, delimiter: ',') %>
+                ¥<%= (@order.total_price - @order.postage).to_s(:delimited, delimiter: ',') %>
               </td>
             </tr>
             <tr>
               <th class="info">ご請求金額</th>
               <td class="col-xs-5">
-                ¥<%= @order.total_payment.to_s(:delimited, delimiter: ',') %>
+                ¥<%= @order.total_price.to_s(:delimited, delimiter: ',') %>
               </td>
             </tr>
         </table>
