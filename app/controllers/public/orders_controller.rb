@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
     @cart_items = current_customer.cart_items
+    
   end
 
   def create
