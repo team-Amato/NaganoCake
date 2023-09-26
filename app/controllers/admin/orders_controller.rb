@@ -1,7 +1,7 @@
 class Admin::OrdersController < ApplicationController
 
   def index
-      @orders = Order.where(customer_id: current_customer).order(created_at: :desc)
+      @orders = Order.all.order(created_at: :desc)
   end
 
   def show

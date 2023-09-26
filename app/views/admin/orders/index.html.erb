@@ -14,10 +14,9 @@
 		<% @orders.each do |order|%>
 		<tr>
 			<td class="col-xs-3"><%= order.created_at.strftime('%Y/%m/%d') %></td>
-				<%= order.count %>
-				<%= order.name %>
-			<td class="col-xs-2"><%= order.order_status %></td>
-		</tr>
+				<td><%= order.name %></td>
+				<td><%= order.order_details %></td>
+			<td class="col-xs-2">
 		<% end %>
 	</table>
      </div>
