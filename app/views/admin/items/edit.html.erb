@@ -1,58 +1,50 @@
-<div class="row">
-  <div class="col-md-10 col-md-offset-1 mx-md-3">
-    
-    <%= form_for(@item, url: admin_item_path) do |f| %>
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-2"></div>
+      <div class="col-md-8">
+         <h4>商品編集</h4>
+               <%= form_for(@item, url: admin_item_path) do |f| %>
+            <table class="new-form-table">
+              <tbody>
+                <tr>
+                  <%= f.file_field :item_image, class: "block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+                </tr>
+                <tr>
+                  <th>商品名</th>
+                  <td><%= f.text_field :name, class: "form-control" %></td>
+                </tr>
 
-    <div class="col-md-5">
-     <h2>商品編集</h2>
+                <tr>
+                  <th>商品説明</th>
+                  <td><%= f.text_area :explanation, class: "form-control" %></td>
+                </tr>
 
-      
-      <div class="product-img" style="margin-top: 20px;">
-      <%= image_tag @item.get_item_image(300,300) %>
+                <tr>
+                  <th>ジャンル</th>
+                  <td><%= f.collection_select :genre_id, Genre.all ,:id, :name, include_blank: "--選択してください--" %></td>
+                </tr>
+
+                <tr>
+                  <th>税抜価格</th>
+                  <td>  <%= f.text_field :price, class: "form-control" %></td>
+                </tr>
+
+                <tr>
+                  <th>販売ステータス</th>
+                  <td>
+                  <%= f.radio_button :is_active,true %>
+                  <%= f.label :is_active,"販売中" %>
+                  <%= f.radio_button :is_active,false %>
+                  <%= f.label :is_active,"販売不可" %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+              <div class="text-center">
+              <%= f.submit "変更を保存" ,class: "btn btn-primary text-right" %>
+              </div>
+              </div>
+            <% end %>
       </div>
-    </div>
-
-      <div class="col-md-5 col-md-offset-2">
-        <table class="new-form-table">
-          <tbody>
-
-            <tr>
-              <th>商品名</th>
-              <td><%= f.text_field :name, class: "form-control" %></td>
-            </tr>
-
-            <tr>
-              <th>商品説明</th>
-              <td><%= f.text_area :explanation, class: "form-control" %></td>
-            </tr>
-
-            <tr>
-              <th>ジャンル</th>
-              <td><%= f.collection_select :genre_id, Genre.all ,:id, :name, include_blank: "--選択してください--" %></td>
-            </tr>
-
-            <tr>
-              <th>税抜価格</th>
-              <td>  <%= f.text_field :price, class: "form-control" %></td>
-            </tr>
-
-            <tr>
-              <th>販売ステータス</th>
-              <td>
-              <%= f.radio_button :is_active,true %>
-              <%= f.label :is_active,"販売中" %>
-              <%= f.radio_button :is_active,false %>
-              <%= f.label :is_active,"販売不可" %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="text-right">
-        <%= f.submit "更新" ,class: "btn btn-primary text-right" %>
-        </div>
-        </div>
-        <% end %>
-
+    <div class="col-md-2"></div>
   </div>
-</div>

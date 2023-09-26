@@ -14,21 +14,16 @@
 
 　  <tbody>
         <% @cart_items.each do |cart_item| %>
-            <tr>
-                <td><%= cart_item.name %></td> <!--商品名-->
-                <td><%= (cart_item.price).to_s(:delimited) %></td> <!--単価(税込)-->
-                <td>
-                    <%= form_with model:cart_item, url:cart_item_path(cart_item.id) , local:true do |f| %>
-                        <%= f.select :amount, *[1..10] %>
-                        <%= f.submit "変更" , class: "btn btn-success" %>
-                    <% end %>
-                </td>
-                <%= (cart_item.price*cart.quantity).to_s(:delimited) %></td> <!--小計-->
-                <td>
-                    <%= link_to cart_item_path(cart_item.id), method: :delete do %>
-                        <button type="button" class="btn btn-danger text-light">削除する</button><!--削除ボタン-->
-                    <% end %>
-                </td>
+        　<tr>
+            <td>
+              <%= image_tag cart_item.item.get_item_image(100,100) %><!--商品画像-->
+              <%= cart_item.item.name %><!--商品名-->
+            </td>
+            <td class="tax-price", style="vertical-align:middle"><%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',')%></td> <!--単価(税込)-->
+            <td><%= cart_item.amount %></td>
+            <td class="subtotal", style="vertical-align:middle">
+            　<%= cart_item.subtotal.to_s(:delimited, delimiter: ',')%>
+            </td> <!--小計-->
             </tr>
         <% end %>
     </tbody>
@@ -75,7 +70,7 @@
         </tr>
       </table>
 
-      <%= link_to "購入を確定する", orders_thanks_path, class: 'btn btn-primary col-xs-12' %>
+      <%= link_to "購入を確定する", orders_path, method: :post,class: 'btn btn-primary col-xs-12' %>
 
     </div>
 </div>
