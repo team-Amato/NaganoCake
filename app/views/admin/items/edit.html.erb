@@ -1,9 +1,9 @@
 <div class="container mt-5 mb-5">
   <div class="row">
     <div class="col-md-2"></div>
-      <div class="col-md-8">    
+      <div class="col-md-8">
          <h4>商品編集</h4>
-              <%= form_with model: @item, url: admin_items_path, local: true, class: "xl:w-8/12 md:w-10/12", data: { turbo: false }  do |f| %>
+               <%= form_for(@item, url: admin_item_path) do |f| %>
             <table class="new-form-table">
               <tbody>
                 <tr>
@@ -13,22 +13,22 @@
                   <th>商品名</th>
                   <td><%= f.text_field :name, class: "form-control" %></td>
                 </tr>
-    
+
                 <tr>
                   <th>商品説明</th>
                   <td><%= f.text_area :explanation, class: "form-control" %></td>
                 </tr>
-    
+
                 <tr>
                   <th>ジャンル</th>
                   <td><%= f.collection_select :genre_id, Genre.all ,:id, :name, include_blank: "--選択してください--" %></td>
                 </tr>
-    
+
                 <tr>
                   <th>税抜価格</th>
                   <td>  <%= f.text_field :price, class: "form-control" %></td>
                 </tr>
-    
+
                 <tr>
                   <th>販売ステータス</th>
                   <td>
