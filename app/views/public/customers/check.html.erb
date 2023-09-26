@@ -4,13 +4,13 @@
     <div class="col-md-8">
 
         <div class="text-center">
-            <B>本当に退会しますか？</B>
+            <h5 class="font-weight-bold">本当に退会しますか？</h5>
             
-            <p>
+            <h5>
                 退会すると、会員登録情報や<br>
                 これまでの購入履歴が閲覧できなくなります。<br>
                 退会する場合は、「退会する」をクリックしてください。
-            </p>
+            </h5>
             
             <%= link_to "退会しない", customers_mypage_path, :class => "btn btn-primary ms-2" %>
             <%= link_to "退会する", customers_withdraw_path, method: :patch, :class => "btn btn-danger ms-3", data: { confirm: "本当に退会しますか？" } %>

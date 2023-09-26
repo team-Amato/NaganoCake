@@ -3,11 +3,11 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
 
-      <h4>マイページ</h4>
+      <h4 class="font-weight-bold">マイページ</h4>
 
-      <h4>登録情報
+      <h5 class="font-weight-bold">登録情報
         <%= link_to '編集する', customers_edit_path, class: "btn btn-success mb-2 btn-sm" %>
-      </h4>
+      </h5>
         <div class="table-responsive">
           <table class="table table-bordered">
             <tr>
@@ -32,8 +32,8 @@
             </tr>
           </table>
         </div>
-          <h4>配送先 <%= link_to '一覧表示', addresses_path, class: "btn btn-info  btn-sm" %></h4><br>
-          <h4>注文履歴 <%= link_to '一覧表示', orders_path, class: "btn btn-info btn-sm mb-2" %></h4>
+          <h5 class="font-weight-bold">配送先 <%= link_to '一覧表示', addresses_path, class: "btn btn-info  btn-sm" %></h5>
+          <h5 class="font-weight-bold">注文履歴 <%= link_to '一覧表示', orders_path, class: "btn btn-info btn-sm mb-2" %></h5>
 
      </div>
     <div class="col-md-2"></div>
