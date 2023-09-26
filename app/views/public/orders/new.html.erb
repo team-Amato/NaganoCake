@@ -4,7 +4,7 @@
 	</div>
 	<div class="panel-body">
 
-		<%= form_with(url: orders_path, method: :post) do |form| %>
+		<%= form_with(url: orders_confirm_path, method: :post) do |form| %>
 			<h3>支払方法</h3>
 
 			<!-- form.radio_button :カラム名, :保存される値(enumの番号) -->
@@ -46,7 +46,7 @@
 				<%= form.text_field :name, class: "col-xs-4 form-control-static name"%>
 			</div>
 
-	   		<%= form.submit "確認画面へ進む", class: 'btn btn-warning col-xs-6 col-xs-offset-1'%>
+	   		<%= link_to "確認画面へ進む", orders_confirm_path, method: :post, class: 'btn btn-warning col-xs-6 col-xs-offset-1'%>
 
 		<% end %>
 	</div>
