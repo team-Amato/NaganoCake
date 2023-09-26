@@ -1,6 +1,7 @@
-<div class="row">
-  <div class="col-md-10 col-md-offset-1 mx-md-3">
-    <h2>商品新規登録</h2>
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 mx-md-3">
+      <h2>商品新規登録</h2>
 
       <%= form_with model: @item, url: admin_items_path, local: true, class: "xl:w-8/12 md:w-10/12", data: { turbo: false }  do |f| %>
       <%= render "admin/shared/error_messages", resource: @item %>
