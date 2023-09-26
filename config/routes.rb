@@ -26,12 +26,12 @@ Rails.application.routes.draw do
   end
   #admin
   namespace :admin do
-    get '/' => 'homes#top'
+    get '/' => 'orders#index'
     resources :order_details, only: [:update]
     resources :items, only: [:edit, :update, :new, :create, :index, :show]
     resources :genres, only: [:edit, :update, :index, :create]
     resources :customers, only: [:edit, :update, :index, :show]
-    resources :orders, only: [:show, :update]
+    resources :orders, only: [:show, :update, :index]
   end
   # 顧客用
   # URL /customers/sign_in ...

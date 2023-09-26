@@ -1,4 +1,9 @@
 class Admin::OrdersController < ApplicationController
+
+  def index
+      @orders = Order.where(customer_id: current_customer).order(created_at: :desc)
+  end
+
   def show
     @order = Order.find(params[:id])
     @orders = Order.all
