@@ -74,8 +74,8 @@
             <tr>
                 <td><%= order_detail.item.name %></td>
                 <td>¥<%= (order_detail.item.price * 1.1).floor.to_s(:delimited, delimiter: ',') %></td>
-                <td><%= order_detail.quantity %></td>
-                <td>¥<%= ((order_detail.item.price * 1.1).floor * (order_detail.quantity)).to_s(:delimited, delimiter: ',') %></td>
+                <td><%= order_detail.amount %></td>
+                <td>¥<%= ((order_detail.item.price * 1.1).floor * (order_detail.amount)).to_s(:delimited, delimiter: ',') %></td>
             </tr>
           <% end %>
           </tbody>
