@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
 		@order_detail = current_customer.cart_items.all
 
-		@order = current_customer.order.new(orders_params)
+		@order = current_customer.orders.new(orders_params)
     if @order.save
 			@order_detail.each do |order|
 			order_detail = OrderDetail.new
