@@ -1,6 +1,7 @@
-<div class="row">
-	<div class="col-md-12">
-		<h3><strong>注文履歴一覧</strong></h3>
+<div class="container p-3">
+  <div class="row">
+  	<div class="col-md-12">
+		<h3>注文履歴一覧</h3>
 		<table class="table table-bordered table-condensed">
 		<tr>
 			<th>注文日</th>
@@ -17,7 +18,7 @@
 				<%= order.name %>
 			</td>
 			<td class="col-xs-2"><%= order.total_price.to_s(:delimited, delimiter: ',') %></td>
-			<td class="col-xs-2"><%= order.status %></td>
+			<td class="col-xs-2"><%= order.status_i18n %></td>
 			<td><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
 		</tr>
 		<% end %>
