@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :items, only: [:edit, :update, :new, :create, :index, :show]
     resources :genres, only: [:edit, :update, :index, :create]
     resources :customers, only: [:edit, :update, :index, :show]
-    resources :orders, only: [:show, :update, :index]
+    resources :orders, only: [:show, :update]
   end
   # 顧客用
   # URL /customers/sign_in ...
