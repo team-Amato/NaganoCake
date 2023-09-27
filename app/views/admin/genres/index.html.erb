@@ -1,8 +1,10 @@
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">    
 
-<h3>ジャンル一覧・追加</h3>
-  <div class="form-group col-md-10">
+<h4>ジャンル一覧・追加</h4>
+  <div class="form-group">
   <%=form_with model: @genre,url: admin_genres_path, method: :post do |f| %>
 
     <td><%= f.label :"ジャンル名", class: "col-md-2" %></td>
@@ -27,5 +29,7 @@
     <% end %>
   </tbody>
   </table>
+       </div>
+    <div class="col-md-2"></div>
   </div>
 </div>

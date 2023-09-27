@@ -22,3 +22,25 @@ h5.signup {
   margin: 30px 30px;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 0;
+  width: 100%;
+  height: 80px;
+  color: #000;
+  line-height: 50px
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* フッタと同じ高さに設定 */
+  margin-bottom: 60px;
+
+  /* 一番下までスクロールした時の余白 */
+  padding-bottom: 0;
+}
