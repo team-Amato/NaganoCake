@@ -8,21 +8,21 @@ class Public::OrdersController < ApplicationController
 # 注文の確定をするアクション
   def create
     @customer = current_customer
-		@cart_items = current_customer.cart_items.all
+		@order_detail = current_customer.cart_items.all
 
 		@order = current_customer.order.new(orders_params)
     if @order.save
-			@cart_items.each do |cart|
-			order_item = OrderDetail.new
-      order_item.item_id = cart.item_id
-      order_item.order_id = @order.id
-      order_item.amount = cart.amount
-      order_item.purchase_price = cart.item.price
-      order_item.making_status = 0
-      order_item.save
+			@order_detail.each do |order|
+			order_detail = OrderDetail.new
+      order_detail.item_id = order.item_id
+      order_detail.order_id = @order.id
+      order_detail.amount = order.amount
+      order_detail.purchase_price =order.item.price
+      order_detail.making_status = 0
+      order_detail.save
       end
     redirect_to orders_thanks_path
-    @cart_items.destroy_all
+    @order_detail.destroy_all
     else
     @order = Order.new(order_params)
     render :new
