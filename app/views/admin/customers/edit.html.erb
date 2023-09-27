@@ -60,19 +60,19 @@
               <td>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
               </td>
-            </tr>  
+            </tr>
             <tr>
               <th>
                 <%= f.label :会員ステータス%>
               </th>
               <td>
                 <%= f.label "有効" %>
-                <%= f.radio_button :is_deleted, false ,checked: "checked"%> 
-                  
+                <%= f.radio_button :is_deleted, false ,checked: "checked"%>
+
                 <%= f.label "退会" %>
                 <%= f.radio_button :is_deleted, true %>
               </td>
-            </tr> 
+            </tr>
             <tr>
               <td></td>
               <td>
