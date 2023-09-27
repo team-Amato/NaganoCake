@@ -8,6 +8,7 @@
             <td></td>
             <td>
               <%= link_to admin_customer_path(@order.customer) do %>
+                <%= @order.customer.first_name %>
                 <%= @order.customer.last_name %>
               <% end %>
             </td>
@@ -84,18 +85,19 @@
         <table>
           <tr>
             <th>商品合計</th>
-            <td></td>
+            <td>￥<%= @total_subtotal %></td>
           </tr>
           <tr>
             <th>送料</th>
-            <td></td>
+            <td>￥<%= @postage %></td>
           </tr>
           <tr>
             <th>請求金額合計</th>
-            <td></td>
+            <td>￥<%= @total_subtotal + @postage %></td>
           </tr>
         </table>
       </div>
     </div>
   </div>
 </div>
+
