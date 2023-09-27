@@ -3,7 +3,7 @@
     <div class="col-md-2"></div>
       <div>
 
-		<h3><strong>注文履歴一覧</strong></h3>
+		<h3>注文履歴一覧</h3>
 		<table class="table table-bordered table-condensed">
 		<tr>
 			<th class="col-xs-2">購入日時</th>
@@ -13,7 +13,7 @@
 		</tr>
 		<% @orders.each do |order|%>
 		<tr>
-			<td class="col-xs-3"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+			<td class="col-xs-3"><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
 				<td><%= order.name %></td>
 				<td><%= order.order_details.count %></td>
 				<td><%= order.status_i18n %></td>
