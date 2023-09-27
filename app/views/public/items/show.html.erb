@@ -13,7 +13,7 @@
       <%= @item.explanation %> <!--商品説明-->
         <!--< @item.price + @item.price * 0.1 %> <!--値段( 税抜価格＋ (税抜価格 ×  0.1))-->
       <h4 class="item-price mt-5">
-        ¥<%= @item.with_tax_price.to_s(:delimited, delimiter: ',')%>(税込)
+        <%= @item.with_tax_price.to_s(:delimited, delimiter: ',')%>(税込)
          <!--サインインしていたらカート機能を使えるようにする-->
       </h4>
         <% if customer_signed_in? %>
