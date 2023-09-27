@@ -8,6 +8,7 @@ class Item < ApplicationRecord
 
   has_one_attached :item_image
   belongs_to :genre
+
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
 
@@ -23,9 +24,9 @@ class Item < ApplicationRecord
   def with_tax_price
       (price * 1.1).floor
   end
-  
+
   def total_item_amount #アイテム合計金額
    order_details.sum { |order_detail| order_detail.subtotal }
   end
-  
+
 end
