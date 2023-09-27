@@ -2,42 +2,58 @@
   <div class="row pt-5">
     <h4>注文履歴詳細</h4>
     <div class="col-md-10 pt-3 offset-md-1 pt-5">
-          <table>
-            <tr>
-              <th>購入者</th>
-              <td>
-                <%= link_to admin_customer_path(@order.customer) do %>
-                  <%= @order.customer.last_name %>
-                <% end %>
+      <table>
+        <tr>
+          <th>購入者</th>
+            <td></td>
+            <td>
+              <%= link_to admin_customer_path(@order.customer) do %>
+                <%= @order.customer.last_name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>注文日</th>
+            <td></td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d')  %></td>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <td></td>
+            <td>
+              <%= @order.post_code %>
+              <%= @order.address %>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td></td>
+            <td><%= @order.name %></td>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <td></td>
+            <td><%= @order.payment_method %></td>
+          </tr>
+          <tr>
+            <th>注文ステータス</th>
+            <td>
+            <td>
+              <%= form_with model: @order, url: admin_order_path(@order), method: :patch, local: true  do |f| %>
+                <%= f.select :status, Order.statuses.keys, class: "status" %>
+                <%= f.submit "更新" , class: "btn btn-success" %>
+              <% end %>
               </td>
-            </tr>
-            <tr>
-              <th>注文日</th>
-              <td></td>
-              <td><%= @order.created_at %></td>
-            </tr>
-            <tr>
-              <th>配送先</th>
-              <td></td>
-              <td><%= @order.post_code %></td>
-              <td><%= @order.address %></td>
-            </tr>
-            <tr>
-              <th>支払方法</th>
-              <td></td>
-              <td><%= @order.payment_method %></td>
-            </tr>
-            <tr>
-              <th>注文ステータス</th>
-              <td></td>
-              <td class="<%= @customer.is_deleted ? 'text-muted' : 'text-success' %>"><%= @customer.is_deleted ? '退会済み' : '有効' %></td>
-              <td>
-                <button type="submit" class="btn btn-success">更新</button>
-              </td>
-            </tr>
-          </table>
+          </tr>
+        </table>
+    </div>
+  </div>
+</div>
 
-        <div class="shipping_address pt-5">
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 pt-3 offset-md-1">
+        <div class="order-history">
           <table class="table table-bordered">
             <tr class="table-active">
               <th>商品名</th>
@@ -46,18 +62,40 @@
               <th>小計</th>
               <th>製作ステータス</th>
             </tr>
-
-            <% @orders.each do |order| %>
+            
+            <% @order_items.each do |item| %>
               <tr>
-                <td><%= order.items.name %></td>
-                <td><%= order.order_details.purchase_price %></td>
-                <td><%= order.order_details.amount %></td>
-                <td><%= order_details.amount %></td>
-                <td><%= order.order_details.making_status %></td>
+                <td><%= item.item.name %></td>
+                <td><%= item.purchase_price %></td>
+                <td><%= item.amount %></td>
+                <td><%= item.subtotal %></td>
+                <td> 
+                  <%= form_with model: item, url: admin_order_detail_path(item.id), method: :patch, local: true  do |f| %>
+                    <%= f.select :making_status, OrderDetail.making_statuses.keys, class: "making_status" %>
+                    <%= f.submit "更新" , class: "btn btn-success" %>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </table>
         </div>
+      </div>
+      <div class="col-md-2 pt-5">
+        <table>
+          <tr>
+            <th>商品合計</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>送料</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>請求金額合計</th>
+            <td></td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>
