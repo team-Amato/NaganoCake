@@ -9,6 +9,7 @@
             <td>
               <%= link_to admin_customer_path(@order.customer) do %>
                 <%= @order.customer.last_name %>
+                <%= @order.customer.first_name %>
               <% end %>
             </td>
           </tr>
@@ -98,12 +99,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
