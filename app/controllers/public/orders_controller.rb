@@ -33,7 +33,7 @@ class Public::OrdersController < ApplicationController
     # @orders = Order.all.order(created_at: :desc)#注文履歴を降順で並べる
     # @orders = Order.where(customer_id: current_customer.id)
     @orders = current_customer.orders
-    
+
   end
 
   def confirm
@@ -77,7 +77,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order_items = Order.find(params[:id])
+    @order = Order.find(params[:id])
     @order_details= OrderDetail.where(order_id: @order.id)
   end
 
