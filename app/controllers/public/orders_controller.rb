@@ -33,6 +33,7 @@ class Public::OrdersController < ApplicationController
     # @orders = Order.all.order(created_at: :desc)#注文履歴を降順で並べる
     # @orders = Order.where(customer_id: current_customer.id)
     @orders = current_customer.orders
+    
   end
 
   def confirm
@@ -45,10 +46,11 @@ class Public::OrdersController < ApplicationController
     	@order.post_code = current_customer.post_code
 
     elsif params[:order][:address_number] == "2"
-      if Address.exists?(name: params[:order][:registered])
-      	# @address = Address.find(params[:order][:address_id])
-      	@order.name = Address.find(params[:order][:registered]).name
-        @order.address = Address.find(params[:order][:registered]).address
+      if Address.exists?(id: params[:order][:registered])
+        @address = Address.find(params[:order][:registered])
+        @order.post_code = @address.post_code
+      	@order.name = @address.name
+        @order.address = @address.address
       else
       render :new
       end
@@ -75,7 +77,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order_items = Order.find(params[:id])
     @order_details= OrderDetail.where(order_id: @order.id)
   end
 
